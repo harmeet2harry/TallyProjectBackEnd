@@ -8,30 +8,22 @@ const userController = require('../controllers/users.controller');
 
 router.get('/', (req, res) => {
     res.status(201).json({"heelo": "world"})
+   
 });
 
 router.post('/', cors(), verifytoken, (req, res, next) => {
   
-    jwt.verify(req.token, 'SecretKey', {
-    }, (err, authdata) => {
-        if(err) {
-            next(err);
-        }
-        else {
-            // const userModel = mongoose.model('User', userSchema );
-            const user = new userModel({
-                firstname : req.body.firstname,
-                lastname: req.body.lastname,
-                email: req.body.email
-            });
-        
-            user.save().then(
-                resp => {
-                    res.status(201).json(resp);
-                }
-            )
-        }
+    const user = new userModel({
+        firstname : req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email
     });
+
+    user.save().then(
+        resp => {
+            res.status(201).json(resp);
+        }
+    );
 });
 
 function verifytoken(req, res, next) {

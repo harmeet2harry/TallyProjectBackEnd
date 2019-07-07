@@ -23,6 +23,9 @@ app.use('/api/users', require('./routes/users'));
 
 app.use('/api/login', require('./routes/login'));
 
+app.use('/api/items', require('./routes/items'));
+
+
 
 app.use(errHandler);
 const port = process.env.PORT || 4000;

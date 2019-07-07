@@ -5,5 +5,7 @@ mongoose.connect(config.connectionString, { useCreateIndex: true, useNewUrlParse
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    User: require('../models/users.model')
+    User: require('../models/users.model'),
+    Stores: require('../models/stores.models'),
+    Items: require('../models/Item.model')
 }
